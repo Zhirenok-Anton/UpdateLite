@@ -1,0 +1,1 @@
+ java -Dmypath={путь к папке с проектом} -cp UpdateLite.jar StartUpdateLite
