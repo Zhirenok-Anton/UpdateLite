@@ -31,7 +31,7 @@ public class UnpackZip {
     }
 
     public void unpack(String zipVersion) throws IOException {
-        logger.info("Распаковка архива - " + zipVersion);
+        logger.info("Unpack zip - " + zipVersion);
         if (path!=null && nameDirectory != null){
             destDir = new File(path + "\\" + nameDirectory);
         }else {
@@ -66,7 +66,7 @@ public class UnpackZip {
         }
         zis.closeEntry();
         zis.close();
-        logger.info("Архив Распакован - " + zipVersion);
+        logger.info("Unpacked zip - " + zipVersion);
     }
 
     private File newFile(File destinationDir, ZipEntry zipEntry) throws IOException {
@@ -82,14 +82,9 @@ public class UnpackZip {
     }
 
     public void renameBaseFolder(){
-        logger.info("Преименовать папку с версией");
+        logger.info("Rename Base folder ");
         String[] parts = nameFirstFolder.split("/");
         new File(destDir.getPath() +"\\"+ parts[0]).
                 renameTo(new File(destDir.getPath() + "\\shop-lite"));
     }
-
-    public boolean existsDirectory(String nameDirectory){
-        return new File(nameDirectory.replace(".zip","")).exists();
-    }
-
 }

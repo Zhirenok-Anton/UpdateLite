@@ -22,28 +22,39 @@ public class EditFile {
         this.projectName = projectName;
     }
 
-    public void editeFileDbConnection() throws IOException {
-        logger.info("Изменение файла для подключения базы данных");
+    public void editeFileDbConnection() {
+        logger.info("Edite File for database connection");
         String search = "jdbc:postgresql://localhost:5432/postgres";
         String replace = "jdbc:postgresql://localhost:5432/postgres-" + projectName;
         Path path = Paths.get(this.path + "\\" + projectName + "\\shop-lite\\config\\db.connection.properties");
 
         Charset charset = StandardCharsets.UTF_8;
 
-        Files.write(path,
-                new String(Files.readAllBytes(path), charset).replace(search, replace)
-                        .getBytes(charset));
-        logger.info("Файл для подключения базы данных изменен");
+        try {
+            Files.write(path,
+                    new String(Files.readAllBytes(path), charset).replace(search, replace)
+                            .getBytes(charset));
+            logger.info("File for database connection edited");
+        } catch (IOException e) {
+            logger.error("Error when editing file for database connection edited" + e);
+        }
+
     }
 
     public void editeFileLauncherConf(String zipBaseVersion) throws IOException {
-        logger.info("Изменение файла для 'launcher.conf'");
-        System.out.println("INFO: изменение фаила конфигурации");
-        FileWriter writer = new FileWriter(path + "\\" + projectName + "\\shop-lite\\launcher.conf", true);
-        writer.write("\n" +
-                "[NO UPDATE]\n" +
-                "UpdateServer = " + zipBaseVersion.replace(".zip",""));
-        writer.close();
-        logger.info("Файл 'launcher.conf' изменен");
+        logger.info("Edite file " + path + "\\" + projectName + "\\shop-lite\\launcher.conf");
+        FileWriter writer = null;
+        try {
+            writer = new FileWriter(path + "\\" + projectName + "\\shop-lite\\launcher.conf", true);
+            writer.write("\n" +
+                    "[NO UPDATE]\n" +
+                    "UpdateServer = " + zipBaseVersion.replace(".zip",""));
+            logger.info("file " + path + "\\" + projectName + "\\shop-lite\\launcher.conf" + " edited");
+        } catch (IOException e) {
+            logger.error("Error when edited file " + path + "\\" + projectName + "\\shop-lite\\launcher.conf " + e);
+        }
+        finally {
+            writer.close();
+        }
     }
 }

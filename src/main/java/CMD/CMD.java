@@ -36,26 +36,36 @@ public class CMD {
             throw new RuntimeException(e);
         }
     }
-
+    //TODO Добавить проверку на наличие фаила БД + логирование
     public void damp(String postgresPath, String postgresUser, String postgresPassword, String postgresNameDB, String postgresDump) {
-        logger.info("Обновление Базы данных");
+        logger.info("Update database");
         afterCMD();
+        stdin.println(postgresPath.substring(0,2));// для того чтобы переключится на нужный диск
         stdin.println("cd " + postgresPath);
         stdin.println("set PGPASSWORD=" + postgresPassword);
         stdin.println("psql.exe -p5432 -U " + postgresUser + " " + postgresNameDB + " < " + postgresDump);
         beforeCMD();
-        logger.info("База данных обновлена");
+        logger.info("Database updated");
     }
 
     public void createDB(String postgresPath, String postgresUser, String postgresPassword, String postgresNameDB) {
-        logger.info("Создание базы данных - " + postgresNameDB);
+        logger.info("Create database - " + postgresNameDB);
         afterCMD();
+        stdin.println(postgresPath.substring(0,2));// для того чтобы переключится на нужный диск в командной строке
         stdin.println("cd " + postgresPath);
         stdin.println("set PGPASSWORD=" + postgresPassword);
         stdin.println("createdb.exe -U " + postgresUser + " " + postgresNameDB);
         beforeCMD();
-        logger.info("Создана база данных - " + postgresNameDB);
+        logger.info("Database created - " + postgresNameDB);
     }
-    public void startExe(){}
+    public void startExe(String pathLite){
+        logger.info("Start RM Lite");
+        afterCMD();
+        stdin.println(pathLite.substring(0,2));// для того чтобы переключится на нужный диск в командной строке
+        stdin.println("cd " + pathLite);
+        stdin.println("launcher.exe");
+        beforeCMD();
+        logger.info("RM Lite started");
+    }
 }
 

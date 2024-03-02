@@ -17,9 +17,9 @@ public class ConnectionManager {
 
         try {
             Class.forName("org.postgresql.Driver");
-            logger.info("Загрузка драйвера org.postgresql.Driver");
+            logger.info("Load driver org.postgresql.Driver");
         } catch (ClassNotFoundException e) {
-            logger.error("Драйвер org.postgresql.Driver не загружен");
+            logger.error("error load Driver org.postgresql.Driver " + e);
             throw new RuntimeException(e);
         }
     }

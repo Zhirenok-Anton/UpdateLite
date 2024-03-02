@@ -62,28 +62,28 @@ public class JdbcRunner {
         Connection con = null;
         Statement stmt = null;
         try {
-            logger.info("Выполнение скрипта - " + sql);
+            logger.info("Script execution - " + sql);
             Class.forName("org.postgresql.Driver");
             con = DriverManager.getConnection(url, user, pass);
             stmt = con.createStatement();
             stmt.execute(sql);
-            System.out.println("INFO: Скрипт выполнен");
+            logger.info("Script executed - " + sql);
         } catch (Exception e) {
-            logger.error("При выполнении скрипта произошла ошибка");
+            logger.error("Error script execution " + e);
             e.printStackTrace();
         } finally {
             try {
                 if (stmt != null)
                     stmt.close();
             } catch (SQLException se2) {
-                logger.error("Не удалось закрыть соединение Statement");
+                logger.error("Error close statement");
             }
             try {
                 if (con != null)
                     con.close();
             } catch (SQLException se) {
                 se.printStackTrace();
-                logger.error("Не удалось закрыть соединение Connection");
+                logger.error("Error close Connection");
             }
         }
     }

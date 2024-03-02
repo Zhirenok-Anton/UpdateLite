@@ -2,10 +2,8 @@
   "nameShop_Lite": "",
   "updateVersion": "",
   "path": "",
-  "baseVersion": "",
   "db": {
     "postgresPath": "C:\\Program Files\\PostgreSQL\\12\\bin",
-    "postgresDump":"",
     "connection": {
       "dbUrl": "jdbc:postgresql://localhost:5432",
       "pass": "postgres",

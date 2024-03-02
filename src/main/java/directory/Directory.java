@@ -17,7 +17,7 @@ public class Directory {
     }
 
     public void createDirectors(String nameDirectory){
-        logger.info("Создание директорий под РМ ЛАЙТ");
+        logger.info("Create directors for RM Lite");
         try {
             new File(path + "\\" + nameDirectory).mkdir();
             new File(path + "\\" + nameDirectory + "\\rmlite").mkdir();
@@ -25,9 +25,9 @@ public class Directory {
             new File(path + "\\" + nameDirectory + "\\rmlite\\r").mkdir();
             new File(path + "\\" + nameDirectory + "\\rmlite\\Compro").mkdir();
             new File(path + "\\" + nameDirectory + "\\rmlite\\Pcards").mkdir();
-            logger.info("Директории под РМ ЛАЙТ созданы");
+            logger.info("Directors for RM Lite created");
         }catch (Exception e){
-            logger.info("при создании директорий произошла ошибка");
+            logger.info("created Directors error " + e);
             e.printStackTrace();
         }
     }
