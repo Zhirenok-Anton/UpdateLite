@@ -56,5 +56,6 @@ public class CMD {
         beforeCMD();
         logger.info("Создана база данных - " + postgresNameDB);
     }
+    public void startExe(){}
 }
 

@@ -42,12 +42,12 @@ public class JdbcRunner {
     }
 
     public void updateSequenceBasketId(){
-        String script = "ALTER SEQUENCE public.basket_num_sequence RESTART " + System.currentTimeMillis() + ";";
+        String script = "ALTER SEQUENCE public.basket_num_sequence RESTART " + System.currentTimeMillis()/1000 + ";";
         runScripts(script);
     }
 
     public void updateSequencePortionId(){
-        String script = "ALTER SEQUENCE public.portion_id_sequence RESTART " + System.currentTimeMillis() + ";";
+        String script = "ALTER SEQUENCE public.portion_id_sequence RESTART " + System.currentTimeMillis()/1000 + ";";
                 runScripts(script);
     }
 

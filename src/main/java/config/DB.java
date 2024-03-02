@@ -13,10 +13,6 @@ public class DB {
         return postgresPath;
     }
 
-    public String getPostgresDump() {
-        return postgresDump;
-    }
-
     public Connection getConnection() {
         return connection;
     }

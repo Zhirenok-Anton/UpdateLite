@@ -11,12 +11,12 @@ public class ParserGson {
 
     public ObjectJSON pars(){
         Gson gson = new Gson();
-        try (FileReader reader= new FileReader("config.json")){
+        try (FileReader reader = new FileReader("C:\\Users\\AZhirenok\\IdeaProjects\\UpdateLite\\out\\artifacts\\UpdateLite_jar\\config.json")){
             logger.info("Парсим фаил config.json");
-            ObjectJSON objectJSON= gson.fromJson(reader,ObjectJSON.class);
+            ObjectJSON objectJSON = gson.fromJson(reader,ObjectJSON.class);
             return objectJSON;
         }catch (Exception e){
-            logger.error("pars error " + e.toString());
+            logger.error("pars error " + e);
         }
         return null;
     }

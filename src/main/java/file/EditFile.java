@@ -30,8 +30,9 @@ public class EditFile {
 
         Charset charset = StandardCharsets.UTF_8;
 
-        Files.writeString(path,
-                Files.readString(path, charset).replace(search, replace), charset);
+        Files.write(path,
+                new String(Files.readAllBytes(path), charset).replace(search, replace)
+                        .getBytes(charset));
         logger.info("Файл для подключения базы данных изменен");
     }
 

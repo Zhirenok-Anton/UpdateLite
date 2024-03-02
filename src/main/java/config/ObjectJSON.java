@@ -19,10 +19,6 @@ public class ObjectJSON {
         return path;
     }
 
-    public String getBaseVersion() {
-        return baseVersion;
-    }
-
     public DB getDb() {
         return db;
     }
